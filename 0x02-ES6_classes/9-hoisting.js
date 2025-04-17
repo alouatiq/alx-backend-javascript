@@ -4,8 +4,13 @@ export class ALXClass {
     this._location = location;
   }
 
-  get year() { return this._year; }
-  get location() { return this._location; }
+  get year() {
+    return this._year;
+  }
+
+  get location() {
+    return this._location;
+  }
 }
 
 export class StudentALX {
@@ -36,5 +41,5 @@ export const listOfStudents = [
   new StudentALX('John', 'Doe', class2020),
   new StudentALX('Albert', 'Clinton', class2019),
   new StudentALX('Donald', 'Bush', class2019),
-  new StudentALX('Jason', 'Sandler', class2019)
+  new StudentALX('Jason', 'Sandler', class2019),
 ];
