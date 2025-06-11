@@ -3,8 +3,8 @@ const fs = require('fs');
 
 function countStudents(path) {
   return new Promise((resolve, reject) => {
-    fs.readFile(path, 'utf8', (err, data) => {
-      if (err) {
+    fs.readFile(path, 'utf8', (error, data) => {
+      if (error) {
         reject(new Error('Cannot load the database'));
         return;
       }
@@ -33,9 +33,10 @@ function countStudents(path) {
 
 const app = http.createServer((req, res) => {
   const { url } = req;
+
   if (url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello ALX!');
+    res.end('Hello Holberton School!');
   } else if (url === '/students') {
     const dbFile = process.argv[2];
     countStudents(dbFile)
@@ -43,9 +44,9 @@ const app = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-Type': 'text/plain' });
         res.end(`This is the list of our students\n${lines.join('\n')}`);
       })
-      .catch((err) => {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Cannot load the database');
+      .catch(() => {
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('This is the list of our students\nCannot load the database');
       });
   }
 });
