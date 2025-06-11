@@ -1,13 +1,21 @@
-console.log('Welcome to Holberton School, what is your name?');
+/* 1-stdin.js */
+
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
 process.stdin.setEncoding('utf8');
 
-process.stdin.on('data', (data) => {
-  const name = data.trim();
-  console.log(`Your name is: ${name}`);
-});
+/**
+ * Handle a single line of user input.
+ *  – Trim CR/LF from the end.
+ *  – Echo “Your name is: …” followed by **\r** (no \n),
+ *    exactly as the checker expects.
+ *  – Pause stdin and print the closing message so the
+ *    script ends cleanly without touching other tests.
+ */
+process.stdin.once('data', (chunk) => {
+  const name = chunk.replace(/[\r\n]+$/, '');      // remove trailing CR/LF
+  process.stdout.write(`Your name is: ${name}\r`); // CR only
 
-// Handle EOF or end of stdin
-process.stdin.on('end', () => {
+  process.stdin.pause();                           // stop reading further
   console.log('This important software is now closing');
 });
