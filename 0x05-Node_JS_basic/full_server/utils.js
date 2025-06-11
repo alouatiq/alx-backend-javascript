@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-function readDatabase(path) {
+export function readDatabase(path) {
   return new Promise((resolve, reject) => {
     fs.readFile(path, 'utf8', (err, data) => {
       if (err) {
@@ -26,5 +26,3 @@ function readDatabase(path) {
     });
   });
 }
-
-export default readDatabase;
