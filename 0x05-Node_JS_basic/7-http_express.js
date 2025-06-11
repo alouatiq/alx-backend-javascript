@@ -34,7 +34,7 @@ function countStudents(path) {
 }
 
 app.get('/', (req, res) => {
-  res.send('Hello ALX!');
+  res.status(200).send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
@@ -42,10 +42,11 @@ app.get('/students', (req, res) => {
   countStudents(dbFile)
     .then((lines) => {
       res.set('Content-Type', 'text/plain');
-      res.send(`This is the list of our students\n${lines.join('\n')}`);
+      res.status(200).send(`This is the list of our students\n${lines.join('\n')}`);
     })
     .catch(() => {
-      res.status(500).send('Cannot load the database');
+      res.set('Content-Type', 'text/plain');
+      res.status(200).send('This is the list of our students\nCannot load the database');
     });
 });
 
