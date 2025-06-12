@@ -1,0 +1,14 @@
+{
+  "name": "task_0",
+  "version": "1.0.0",
+  "description": "Unit test for calculateNumber using Mocha and Node assert",
+  "main": "0-calcul.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
+}
